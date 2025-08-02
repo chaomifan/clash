@@ -1,2 +1,2 @@
-# class
+# clash
 class订阅规则
