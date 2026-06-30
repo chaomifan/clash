@@ -5,7 +5,7 @@
 # 机场订阅
 proxy-providers:
   DOGCOM:
-    url: "https://mfrezep.doggygosubs.com:8443/api/v1/client/17581c3da19605ba9b6823056f9c50f6?flag=clashmeta&version=1.19.27"
+    url: ""
     type: http
     interval: 3600
     health-check:
@@ -17,7 +17,7 @@ proxy-providers:
       upb: true
 
   SSRDOG:
-    url: "https://49a648d1011947721c8606f09932e74a.cdn-res-oss-cn-hongkong-aliyuncs-file.com/s?q=4da0c7eb&t=49a648d1011947721c8606f09932e74a.jpg&flag=clash&route=1"
+    url: ""
     type: http
     interval: 3600
     health-check:
