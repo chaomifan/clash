@@ -13,35 +13,15 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连
-    override:
-      upb: true
-
-  SSRDOG:
-    url: "https://49a648d1011947721c8606f09932e74a.cdn-res-oss-cn-hongkong-aliyuncs-file.com/s?q=4da0c7eb&t=49a648d1011947721c8606f09932e74a.jpg&flag=clash&route=1"
-    type: http
-    interval: 3600
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-    override:
-      upb: true
 
 # 用于下载订阅时指定UA
-global-ua: clash.meta
+# global-ua: clash.meta
 
 # 节点信息
 proxies:
   - {name: 直连, type: direct, udp: true}
 
 # 全局配置
-port: 7890
-socks-port: 7891
-redir-port: 7892
-mixed-port: 7893
-tproxy-port: 7894
-allow-lan: true
 bind-address: "*"
 ipv6: false
 unified-delay: true
@@ -62,19 +42,6 @@ profile:
 #external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
 # 嗅探（fakeip下其实可以不用嗅探）
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  skip-domain:
-    - "Mijia Cloud"
-    - "+.push.apple.com"
 
 # 入站
 tun:
@@ -260,10 +227,10 @@ dns:
 # 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
-pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, ♻️ 自动选择, 🇭🇰 狗狗香港, 🇭🇰 SSRDGO香港, 🇭🇰 香港节点, 🇹🇼 狗狗台湾, 🇹🇼 SSRDOG台湾, 🇹🇼 台湾节点, 🇯🇵 狗狗日本, 🇯🇵 SSRDOG日本, 🇯🇵 日本节点, 🇰🇷 狗狗韩国, 🇰🇷 SSRDOG韩国, 🇰🇷 韩国节点, 🇸🇬 狗狗狮城, 🇸🇬 SSRDOG狮城, 🇸🇬 狮城节点, 🇺🇲 狗狗美国, 🇺🇲 SSRDOG美国, 🇺🇲 美国节点, 🐒 狗狗南亚, 🐒 SSRDOG南亚, 🐒 南亚节点, 🧕 狗狗中东, 🇪🇺 狗狗欧洲, 🇪🇺 SSRDOG欧洲, 🇪🇺 欧洲节点, 🇨🇦 狗狗枫叶, 🇨🇦 SSRDOG枫叶, 🇨🇦 枫叶节点, 🇦🇺 狗狗澳洲, 🇧🇷 狗狗南美, 🇿🇦 狗狗南非, 🌐 全部节点, 直连]}
-ai: &ai {type: select, proxies: [🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, 🇹🇼 狗狗台湾, 🇹🇼 SSRDOG台湾, 🇹🇼 台湾节点, 🇯🇵 狗狗日本, 🇯🇵 SSRDOG日本, 🇯🇵 日本节点, 🇰🇷 狗狗韩国, 🇰🇷 SSRDOG韩国, 🇰🇷 韩国节点, 🇸🇬 狗狗狮城, 🇸🇬 SSRDOG狮城, 🇸🇬 狮城节点, 🇺🇲 狗狗美国, 🇺🇲 SSRDOG美国, 🇺🇲 美国节点, 🐒 狗狗南亚, 🐒 SSRDOG南亚, 🐒 南亚节点, 🧕 狗狗中东, 🇪🇺 狗狗欧洲, 🇪🇺 SSRDOG欧洲, 🇪🇺 欧洲节点, 🇨🇦 狗狗枫叶, 🇨🇦 SSRDOG枫叶, 🇨🇦 枫叶节点, 🇦🇺 狗狗澳洲, 🇧🇷 狗狗南美, 🇿🇦 狗狗南非]}
+pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🐒 南亚节点, 🧕 中东节点, 🇪🇺 欧洲节点, 🇨🇦 枫叶节点, 🇦🇺 澳洲节点, 🇧🇷 南美节点, 🇿🇦 南非节点, 🌐 全部节点, 直连]}
+ai: &ai {type: select, proxies: [🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🐒 南亚节点, 🧕 中东节点, 🇪🇺 欧洲节点, 🇨🇦 枫叶节点, 🇦🇺 澳洲节点, 🇧🇷 南美节点, 🇿🇦 南非节点]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, ♻️ 自动选择, 🇭🇰 狗狗香港, 🇭🇰 SSRDGO香港, 🇭🇰 香港节点, 🇹🇼 狗狗台湾, 🇹🇼 SSRDOG台湾, 🇹🇼 台湾节点, 🇯🇵 狗狗日本, 🇯🇵 SSRDOG日本, 🇯🇵 日本节点, 🇰🇷 狗狗韩国, 🇰🇷 SSRDOG韩国, 🇰🇷 韩国节点, 🇸🇬 狗狗狮城, 🇸🇬 SSRDOG狮城, 🇸🇬 狮城节点, 🇺🇲 狗狗美国, 🇺🇲 SSRDOG美国, 🇺🇲 美国节点, 🐒 狗狗南亚, 🐒 SSRDOG南亚, 🐒 南亚节点, 🧕 狗狗中东, 🇪🇺 狗狗欧洲, 🇪🇺 SSRDOG欧洲, 🇪🇺 欧洲节点, 🇨🇦 狗狗枫叶, 🇨🇦 SSRDOG枫叶, 🇨🇦 枫叶节点, 🇦🇺 狗狗澳洲, 🇧🇷 狗狗南美, 🇿🇦 狗狗南非, 🌐 全部节点, 直连]}
+  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 韩国故转, 🔯 狮城故转, 🔯 美国故转, 🔯 南亚故转, 🔯 欧洲故转, 🔯 枫叶故转, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 南亚自动, ♻️ 欧洲自动, ♻️ 枫叶自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🐒 南亚节点, 🧕 中东节点, 🇪🇺 欧洲节点, 🇨🇦 枫叶节点, 🇦🇺 澳洲节点, 🇧🇷 南美节点, 🇿🇦 南非节点, 🌐 全部节点, 直连]}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *ai}
@@ -275,55 +242,37 @@ proxy-groups:
   - {name: 🎥 NETFLIX, <<: *pr}
   - {name: 💶 PayPal, <<: *pr}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 🇭🇰 狗狗香港, type: select, include-all: true, filter: "香港"}
-  - {name: 🇭🇰 SSRDGO香港, type: select, include-all: true, filter: "Hong Kong"}
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(香港|Hong Kong)"}
-  - {name: 🇯🇵 狗狗日本, type: select, include-all: true, filter: "日本"}
-  - {name: 🇯🇵 SSRDOG日本, type: select, include-all: true, filter: "Japan"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(日本|Japan)"}
-  - {name: 🇺🇲 狗狗美国, type: select, include-all: true, filter: "美国"}
-  - {name: 🇺🇲 SSRDOG美国, type: select, include-all: true, filter: "United States"}
-  - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(美国|United States)"}
-  - {name: 🇸🇬 狗狗狮城, type: select, include-all: true, filter: "新加坡"}
-  - {name: 🇸🇬 SSRDOG狮城, type: select, include-all: true, filter: "Singapore"}
-  - {name: 🇸🇬 狮城节点, type: select, include-all: true, filter: "(新加坡|Singapore)"}
-  - {name: 🇹🇼 狗狗台湾, type: select, include-all: true, filter: "台湾"}
-  - {name: 🇹🇼 SSRDOG台湾, type: select, include-all: true, filter: "Taiwan"}
-  - {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "(台湾|Taiwan)"}
-  - {name: 🇰🇷 狗狗韩国, type: select, include-all: true, filter: "韩国"}
-  - {name: 🇰🇷 SSRDOG韩国, type: select, include-all: true, filter: "South Korea"}
-  - {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "(韩国|South Korea)"}
-  - {name: 🇨🇦 狗狗枫叶, type: select, include-all: true, filter: "加拿大"}
-  - {name: 🇨🇦 SSRDOG枫叶, type: select, include-all: true, filter: "Canada"}
-  - {name: 🇨🇦 枫叶节点, type: select, include-all: true, filter: "(加拿大|Canada)"}
-  - {name: 🇦🇺 狗狗澳洲, type: select, include-all: true, filter: "澳洲"}
-  - {name: 🇧🇷 狗狗南美, type: select, include-all: true, filter: "(巴西|墨西哥)"}
-  - {name: 🇿🇦 狗狗南非, type: select, include-all: true, filter: "南非"}
-  - {name: 🐒 狗狗南亚, type: select, include-all: true, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度)"}
-  - {name: 🐒 SSRDOG南亚, type: select, include-all: true, filter: "(Philippines|Malaysia|Thailand|Vietnam)"}
-  - {name: 🐒 南亚节点, type: select, include-all: true, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度|Philippines|Malaysia|Thailand|Vietnam)"}
-  - {name: 🧕 狗狗中东, type: select, include-all: true, filter: "(迪拜|以色列)"}
-  - {name: 🇪🇺 狗狗欧洲, type: select, include-all: true, filter: "(德国|英国|法国|土耳其|荷兰|瑞士)"}
-  - {name: 🇪🇺 SSRDOG欧洲, type: select, include-all: true, filter: "(Great Britain|France|Germany|Netherlands|Turkey)"}
-  - {name: 🇪🇺 欧洲节点, type: select, include-all: true, filter: "(德国|英国|法国|土耳其|荷兰|瑞士|Great Britain|France|Germany|Netherlands|Turkey)"}
-  - {name: 🔯 香港故转, type: fallback, include-all: true, interval: 300, filter: "(香港|Hong Kong)"}
-  - {name: 🔯 日本故转, type: fallback, include-all: true, interval: 300, filter: "(日本|Japan)"}
-  - {name: 🔯 狮城故转, type: fallback, include-all: true, interval: 300, filter: "(新加坡|Singapore)"}
-  - {name: 🔯 美国故转, type: fallback, include-all: true, interval: 300, filter: "(美国|United States)"}
-  - {name: 🔯 台湾故转, type: fallback, include-all: true, interval: 300, filter: "(台湾|Taiwan)"}
-  - {name: 🔯 韩国故转, type: fallback, include-all: true, interval: 300, filter: "(韩国|South Korea)"}
-  - {name: 🔯 南亚故转, type: fallback, include-all: true, interval: 300, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度|Philippines|Malaysia|Thailand|Vietnam)"}
-  - {name: 🔯 欧洲故转, type: fallback, include-all: true, interval: 300, filter: "(德国|英国|法国|土耳其|荷兰|瑞士|Great Britain|France|Germany|Netherlands|Turkey)"}
-  - {name: 🔯 枫叶故转, type: fallback, include-all: true, interval: 300, filter: "(加拿大|Canada)"}
-  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(香港|Hong Kong)"}
-  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(日本|Japan)"}
-  - {name: ♻️ 狮城自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(新加坡|Singapore)"}
-  - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(美国|United States)"}
-  - {name: ♻️ 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(台湾|Taiwan)"}
-  - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(韩国|South Korea)"}
-  - {name: ♻️ 南亚自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度|Philippines|Malaysia|Thailand|Vietnam)"}
-  - {name: ♻️ 欧洲自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(德国|英国|法国|土耳其|荷兰|瑞士|Great Britain|France|Germany|Netherlands|Turkey)"}
-  - {name: ♻️ 枫叶自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(加拿大|Canada)"}
+  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "香港"}
+  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "日本"}
+  - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "美国"}
+  - {name: 🇸🇬 狮城节点, type: select, include-all: true, filter: "新加坡"}
+  - {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "台湾"}
+  - {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "韩国"}
+  - {name: 🇨🇦 枫叶节点, type: select, include-all: true, filter: "加拿大"}
+  - {name: 🇦🇺 澳洲节点, type: select, include-all: true, filter: "澳洲"}
+  - {name: 🇧🇷 南美节点, type: select, include-all: true, filter: "(巴西|墨西哥)"}
+  - {name: 🇿🇦 南非节点, type: select, include-all: true, filter: "南非"}
+  - {name: 🐒 南亚节点, type: select, include-all: true, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度)"}
+  - {name: 🧕 中东节点, type: select, include-all: true, filter: "(迪拜|以色列)"}
+  - {name: 🇪🇺 欧洲节点, type: select, include-all: true, filter: "(德国|英国|法国|土耳其|荷兰|瑞士)"}
+  - {name: 🔯 香港故转, type: fallback, include-all: true, interval: 300, filter: "香港"}
+  - {name: 🔯 日本故转, type: fallback, include-all: true, interval: 300, filter: "日本"}
+  - {name: 🔯 狮城故转, type: fallback, include-all: true, interval: 300, filter: "新加坡"}
+  - {name: 🔯 美国故转, type: fallback, include-all: true, interval: 300, filter: "美国"}
+  - {name: 🔯 台湾故转, type: fallback, include-all: true, interval: 300, filter: "台湾"}
+  - {name: 🔯 韩国故转, type: fallback, include-all: true, interval: 300, filter: "韩国"}
+  - {name: 🔯 南亚故转, type: fallback, include-all: true, interval: 300, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度)"}
+  - {name: 🔯 欧洲故转, type: fallback, include-all: true, interval: 300, filter: "(德国|英国|法国|土耳其|荷兰|瑞士)"}
+  - {name: 🔯 枫叶故转, type: fallback, include-all: true, interval: 300, filter: "加拿大"}
+  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "香港"}
+  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "日本"}
+  - {name: ♻️ 狮城自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "新加坡"}
+  - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "美国"}
+  - {name: ♻️ 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "台湾"}
+  - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "韩国"}
+  - {name: ♻️ 南亚自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(印尼|马来西亚|越南|菲律宾|泰国|印度)"}
+  - {name: ♻️ 欧洲自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(德国|英国|法国|土耳其|荷兰|瑞士)"}
+  - {name: ♻️ 枫叶自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "加拿大"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
 
